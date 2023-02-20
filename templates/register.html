@@ -64,102 +64,30 @@
     <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
         <section>
             <h3 class="font-bold text-2xl"> Crear cuenta.</h3>
-            <p class="text-gray-600 pt-2"> Completa este formulario para registrarte.  </p>
+            <p class="text-gray-600 pt-2"> Ingresa tus datos para inicio de sesion   </p>
         </section>
 
         <section class="mt-5">
             <form class="flex flex-col" method="POST">
-                <h3 class="font-bold text-xl mb-2"> Datos personales </h3>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="nro_documento"> Numero de documento: </label>
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="nro_documento"> Numero de documento </label>
                     <input type="number" id="nro_documento" name="nro_documento" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
                 </div>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="nombre">Nombre: </label>
-                    <input type="text" id="nombre" name="nombre" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="apellido">Apellido: </label>
-                    <input type="text" id="apellido" name="apellido" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="nacionalidad">Nacionalidad: </label>
-                    <select id="nacionalidad" name="nacionalidad" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                        <option value="undefined">Seleccionar...</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Brasil">Brasil</option>
-                        <option value="Chile">Chile</option>
-                        <option value="Uruguay">Uruguay</option>
-                        <option value="Paraguay">Paraguay</option>
-                        <option value="Bolivia">Bolivia</option>
-                        <option value="Peru">Peru</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Venezuela">Venezuela</option>
-                        <option value="Otro">Otro</option> 
-                </select>
-            </div>
-
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="fecha_nacimiento">Fecha de nacimiento: </label>
-                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-
-                <h3 class="font-bold text-xl mb-2"> Informacion medica </h3>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="grupo_sanguineo">Grupo sanguineo: </label>
-                    <select type="text" id="grupo_sanguineo" name="grupo_sanguineo" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                        <option value="undefined">Seleccionar...</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="alergias">Alergias: </label>
-                    <input type="text" id="alergias" name="alergias" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="enfermedades">Enfermedades de base: </label>
-                    <input type="text" id="enfermedades" name="enfermedades" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="medicamentos">Medicaciones o tratamientos: </label>
-                    <input type="text" id="medicamentos" name="medicamentos" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="medico">Medico de cabecera: </label>
-                    <input type="text" id="medico" name="medico" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="seguro">Seguro medico: </label>
-                    <input type="text" id="seguro" name="seguro" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-                </div>
-
-                <h3 class="font-bold text-xl mb-2"> Seguridad. </h3>
-                <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Contraseña: </label>
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Contraseña</label>
                     <input type="password" id="password" name="password" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
                 </div>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password2">Repetir contraseña: </label>
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password2">Repetir contraseña </label>
                     <input type="password" id="password2" name="password2" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
                 </div>
-
-
-                <input class="gradient2 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit" value="Iniciar sesion">
+                <input class="gradient2 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit" value="Siguiente">
             </form>
         </section>
     </main>
 
     <div class="max-w-lg mx-auto text-center mt-12 mb-6">
-        <p class="text-white">Aun no tienes una cuenta? <a href="#" class="font-bold hover:underline"> Crear cuenta</a>.</p>
+        <p class="text-white">Ya tienes una cuenta? <a href="{{url_for('login')}}" class="font-bold hover:underline"> Iniciar sesion</a>.</p>
     </div>
-
 </body>
 </html>
