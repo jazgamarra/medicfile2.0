@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
+from datetime import datetime, date 
 
 # Creamos la aplicacion
 app = Flask(__name__)
@@ -50,19 +51,41 @@ class Ficha (db.Model):
 with app.app_context():
     db.create_all()
 
+def calcular_edad(fecha_nacimiento):
+    fecha_nacimiento = datetime.strptime(fecha_nacimiento, '%Y-%m-%d')
+    today = date.today()
+    edad = today.year - fecha_nacimiento.year - ((today.month, today.day) < (fecha_nacimiento.month, fecha_nacimiento.day))
+    return edad 
+
 @app.route('/')
 def index():
     return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        # Guardamos los datos de inicio de sesion 
+        document = request.form.get('nro_documento')
+        password = request.form.get('password')
+
+        # Buscamos el usuario en la base de datos
+        user = Users.query.filter_by(document=document).first() 
+        if user is not None:
+           # Comparamos la contraseña ingresada con la de la base de datos 
+            if bcrypt.check_password_hash(user.password, password): 
+                login_user(user)
+                return 'success'
+            else:
+                return "warning contraseña incorrecta"
+        else:
+            return "warning usuario no encontrado"
+
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         # Guardamos los datos de inicio de sesion 
-        print (request.form)
         document = request.form.get('nro_documento')
         password = request.form.get('password')
         password2 = request.form.get('password2') 
@@ -80,6 +103,7 @@ def register():
 @app.route('/crear_ficha', methods=['GET', 'POST'])
 def crear_ficha():
     if request.method == 'POST':
+
         # Guardamos los datos de inicio de sesion 
         nombre = request.form.get('nombre')
         apellido = request.form.get('apellido')
@@ -91,9 +115,14 @@ def crear_ficha():
         medicamentos = request.form.get('medicamentos')
         medico_cabecera = request.form.get('medico')
         seguro_medico = request.form.get('seguro')
-        id_user = current_user.id 
 
-        ficha = Ficha(id_user=id_user, nombre=nombre, apellido=apellido, nacionalidad=nacionalidad, grupo_sanguineo=grupo_sanguineo, alergias=alergias, enfermedades=enfermedades, medicamentos=medicamentos, medico_cabecera=medico_cabecera, seguro_medico=seguro_medico, edad=0) 
+        id_user = current_user.id 
+        edad = calcular_edad(fecha_nacimiento)
+
+        # Creamos la ficha
+        ficha = Ficha(id_user=id_user, nombre=nombre, apellido=apellido, nacionalidad=nacionalidad, grupo_sanguineo=grupo_sanguineo, alergias=alergias, enfermedades=enfermedades, medicamentos=medicamentos, medico_cabecera=medico_cabecera, seguro_medico=seguro_medico, edad=edad) 
+
+        # Guardamos la ficha en la base de datos
         db.session.add(ficha)
         db.session.commit()
         return redirect(url_for('login'))
